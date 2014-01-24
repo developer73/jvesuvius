@@ -1,0 +1,47 @@
+<project name="JVesuvius" basedir="." default="main">
+    <description>
+        Build file for JVesuvius project.
+    </description>
+
+    <echo>Building JVesuvius ...</echo>
+    
+    <property name="app.name" value="jvesuvius"/>
+    
+    <property name="src.dir" location="${basedir}/src"/>
+    <property name="lib.dir" location="${basedir}/lib"/>
+    <property name="build.dir" location="${basedir}/build"/>
+    <property name="dist.dir" location="${basedir}/dist"/>
+    <property name="deploy.dir" location="/var/lib/tomcat7/webapps/"/>
+    
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="compile" depends="clean">
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
+            <classpath>
+                <fileset dir="${lib.dir}">
+                    <include name="*"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="war" depends="compile">
+        <mkdir dir="${dist.dir}"/>
+        <war destfile="${dist.dir}/${app.name}.war"
+            webxml="${src.dir}/main/webapp/WEB-INF/web.xml">
+            <lib dir="${lib.dir}"/>
+            <classes dir="${build.dir}"/>
+        </war>
+    </target>
+
+    <target name="deploy" depends="war">
+        <copy file="${dist.dir}/${app.name}.war" todir="${deploy.dir}"/>
+    </target>
+
+    <target name="main" depends="deploy"/>
+
+</project>
