@@ -31,6 +31,7 @@
 
     <target name="war" depends="compile">
         <mkdir dir="${dist.dir}"/>
+        <copy file="${src.dir}/main/config/dbCredentials.properties" todir="${build.dir}"/>
         <war destfile="${dist.dir}/${app.name}.war"
             webxml="${src.dir}/main/webapp/WEB-INF/web.xml">
             <lib dir="${lib.dir}"/>

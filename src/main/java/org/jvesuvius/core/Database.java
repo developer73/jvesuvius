@@ -5,12 +5,16 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+
+import org.jvesuvius.core.Config;
 
 public class Database {
     String dbUrl = "jdbc:postgresql://localhost/jvesuvius";
-    // TODO: Store DB credentials in .properties file.
-    String dbUsername = "";
-    String dbPassword = "";
+    Config config = new Config();
+    HashMap<String, String> dbCredentials = config.getDbCredentials();
+    String dbUsername = dbCredentials.get("dbUsername");
+    String dbPassword = dbCredentials.get("dbPassword");
     Connection con;
     public Database() {
         try {
