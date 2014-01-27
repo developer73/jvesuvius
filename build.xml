@@ -11,6 +11,7 @@
     <property name="lib.dir" location="${basedir}/lib"/>
     <property name="build.dir" location="${basedir}/build"/>
     <property name="dist.dir" location="${basedir}/dist"/>
+    <property name="docs.dir" location="${basedir}/docs/apis"/>
     <property name="deploy.dir" location="/var/lib/tomcat7/webapps/"/>
     
     <target name="clean">
@@ -43,6 +44,21 @@
         <copy file="${dist.dir}/${app.name}.war" todir="${deploy.dir}"/>
     </target>
 
-    <target name="main" depends="deploy"/>
+    <target name="docs" depends="compile">
+        <delete dir="${docs.dir}"/>
+        <mkdir dir="${docs.dir}"/>
+        <javadoc destdir="${docs.dir}" failonerror="true">
+            <classpath>
+                <fileset dir="${lib.dir}">
+                    <include name="*"/>
+                </fileset>
+            </classpath>
+            <packageset dir="${src.dir}/main/java">
+                <include name="org/jvesuvius/core/**"/>
+            </packageset>
+        </javadoc>
+    </target>
+    
+    <target name="main" depends="deploy, docs"/>
 
 </project>

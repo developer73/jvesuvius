@@ -23,9 +23,10 @@ Deployment instructions
 
     * Build the project by running "ant".
       Ant will
-      -- compile java code,
-      -- build a .war archive and
-      -- deploy it to Tomcat webapps directory (/var/lib/tomcat7/webapps/).
+      -- compile java code
+      -- build a .war archive
+      -- deploy .war archive to Tomcat webapps directory (/var/lib/tomcat7/webapps/)
+      -- generate API documentation
 
 
 Usage instructions
