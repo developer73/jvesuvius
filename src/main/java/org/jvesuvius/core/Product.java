@@ -1,6 +1,6 @@
 package org.jvesuvius.core;
 
-class Product {
+public class Product {
     private int id;
     private String name;
     private double price;

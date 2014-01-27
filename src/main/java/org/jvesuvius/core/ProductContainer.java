@@ -7,7 +7,10 @@ import java.util.ArrayList;
 import org.jvesuvius.core.Database;
 import org.jvesuvius.core.Product;
 
-class ProductContainer {
+/**
+* Handles Product related queries.
+*/
+public class ProductContainer {
     public ArrayList<Product> getAll() {
         ResultSet rs = getResultSetAll();
         ArrayList<Product> products = new ArrayList<Product>();

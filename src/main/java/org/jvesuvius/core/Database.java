@@ -9,6 +9,9 @@ import java.util.HashMap;
 
 import org.jvesuvius.core.Config;
 
+/**
+* Handles database connection and query execution.
+*/
 public class Database {
     String dbUrl = "jdbc:postgresql://localhost/jvesuvius";
     Config config = new Config();
@@ -28,6 +31,9 @@ public class Database {
             e.printStackTrace();
         }
     }
+    /**
+    * Executes given SQL query and returns the results.
+    */
     public ResultSet getResultSet(String query) {
         ResultSet rs = null;
         try {

@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.Properties;
 
 public class Config {
+    /**
+    * Returns database credentials from .properties file.
+    * @return HashMap with "dbUsername" key and "dbPassword" key.
+    */
     public HashMap<String, String> getDbCredentials() {
         HashMap<String, String> map = new HashMap<String, String>();
         Properties conf = new Properties();
